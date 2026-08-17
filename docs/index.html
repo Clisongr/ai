@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智析 · AI 数据自由分析台（GitHub Pages 版）</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✦</text></svg>">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="bg-glow bg-glow-a"></div>
+  <div class="bg-glow bg-glow-b"></div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo">✦</div>
+      <div>
+        <h1>智析</h1>
+        <p>AI 数据自由分析台 · Data Freedom Studio</p>
+      </div>
+    </div>
+    <div class="top-actions">
+      <span class="llm-badge" style="background:linear-gradient(135deg,#93c5fd,#818cf8)">🧩 纯浏览器版</span>
+      <label class="btn ghost" for="fileInput">⬆ 上传 CSV</label>
+      <input type="file" id="fileInput" accept=".csv,text/csv" hidden>
+      <button class="btn primary" id="sampleBtn">🎲 加载样例数据</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <section class="panel" id="datasetPanel">
+        <div class="panel-title">📦 当前数据集</div>
+        <div id="datasetMeta" class="muted">正在加载…</div>
+        <div class="col-chips" id="colChips"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">💡 试试这样问</div>
+        <div class="prompts" id="prompts"></div>
+      </section>
+
+      <section class="panel">
+        <div class="panel-title">🤖 自动洞察</div>
+        <div class="insights" id="insights"></div>
+      </section>
+    </aside>
+
+    <main class="chat-area">
+      <div class="chat" id="chat"></div>
+      <div class="composer">
+        <div class="input-wrap">
+          <textarea id="questionInput" rows="1" placeholder="用自然语言自由提问，例如：哪个地区的销售额最高？"></textarea>
+          <button class="btn send" id="sendBtn">发送 ⚡</button>
+        </div>
+        <div class="hints" id="hints"></div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="vendor/echarts.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

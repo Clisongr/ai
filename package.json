@@ -1,0 +1,18 @@
+{
+  "name": "ai-data-freedom-demo",
+  "version": "1.0.0",
+  "description": "智析 · AI 数据自由分析台 —— 基于数据分析的 AI 自由化应用 Demo",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "generate-sample": "node scripts/generate-sample.js",
+    "preview:pages": "node scripts/serve-docs.js",
+    "qa": "node scripts/qa.js"
+  },
+  "dependencies": {
+    "echarts": "^6.1.0",
+    "express": "^4.19.2",
+    "multer": "^2.0.2"
+  }
+}
