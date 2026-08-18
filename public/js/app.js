@@ -135,6 +135,17 @@ function renderStats(payload) {
 }
 
 /* ---------- 图表配置 ---------- */
+function lineXAxis(x) {
+  const n = x.length;
+  const interval = n <= 8 ? 0 : Math.ceil(n / 6) - 1; // 最多显示约 6~7 个标签
+  return {
+    type: 'category',
+    data: x,
+    axisLine: { lineStyle: { color: 'rgba(255,255,255,0.15)' } },
+    axisLabel: { color: '#98a2c0', interval, hideOverlap: true, margin: 12 },
+  };
+}
+
 function buildOption(p) {
   if (p.kind === 'line') {
     const series = p.series.map((s, i) => ({
@@ -185,8 +196,8 @@ function buildOption(p) {
         color: COLORS,
         tooltip: { trigger: 'axis' },
         legend: { textStyle: { color: '#98a2c0' }, top: 4 },
-        grid: { left: 48, right: 20, top: 40, bottom: 30 },
-        xAxis: { type: 'category', data: allX, axisLabel: { color: '#98a2c0' }, axisLine: { lineStyle: { color: 'rgba(255,255,255,0.15)' } } },
+        grid: { left: 56, right: 32, top: 40, bottom: 40 },
+        xAxis: lineXAxis(allX),
         yAxis: { type: 'value', splitLine: { lineStyle: { color: 'rgba(255,255,255,0.07)' } }, axisLabel: { color: '#98a2c0' } },
         series,
       };
@@ -195,8 +206,8 @@ function buildOption(p) {
       color: COLORS,
       tooltip: { trigger: 'axis' },
       legend: { textStyle: { color: '#98a2c0' }, top: 4 },
-      grid: { left: 48, right: 20, top: 40, bottom: 30 },
-      xAxis: { type: 'category', data: p.x, axisLabel: { color: '#98a2c0', interval: Math.max(0, Math.floor(p.x.length / 10) - 1) }, axisLine: { lineStyle: { color: 'rgba(255,255,255,0.15)' } } },
+      grid: { left: 56, right: 32, top: 40, bottom: 40 },
+      xAxis: lineXAxis(p.x),
       yAxis: { type: 'value', splitLine: { lineStyle: { color: 'rgba(255,255,255,0.07)' } }, axisLabel: { color: '#98a2c0' } },
       series,
     };
